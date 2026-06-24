@@ -82,7 +82,7 @@ export default function EventSlider() {
               
               {/* Glassmorphic Caption Card */}
               <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 text-white z-20 flex flex-col space-y-3">
-                <span className="self-start inline-flex items-center rounded-full bg-red-500/20 px-3 py-1 text-xs font-semibold leading-5 text-[#ff3b30] border border-red-500/30 backdrop-blur-sm">
+                <span className="self-start inline-flex items-center rounded-full bg-[#ff3b30] px-3 py-1 text-xs font-bold leading-5 text-white shadow-md">
                   {slide.tag}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white line-clamp-2">

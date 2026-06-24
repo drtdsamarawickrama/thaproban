@@ -79,9 +79,9 @@ export default function Projects() {
             whileHover={{ y: -6 }}
             className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-900 group shadow-sm hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="h-48 bg-zinc-900 border-b border-zinc-800 flex items-center justify-center text-zinc-500 relative overflow-hidden">
+            <div className="h-48 bg-zinc-100/70 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-500 relative overflow-hidden">
               <span className="text-sm font-semibold tracking-wider text-[#ff0000]">UOM R&D HUB</span>
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-zinc-800 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-zinc-200/40 dark:via-zinc-800 to-transparent pointer-events-none" />
             </div>
             <div className="p-6 space-y-3">
               <span className="text-xs text-zinc-400 font-semibold uppercase">Embedded Systems</span>

@@ -11,50 +11,82 @@ const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  
+  // Theme state: default to 'light' (white background)
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  // Load saved theme preference from local storage when page mounts
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    if (savedTheme === "dark") {
+      setTheme("dark");
+      document.documentElement.classList.add("dark"); // Trigger Tailwind's dark styles
+    } else {
+      setTheme("light");
+      document.documentElement.classList.remove("dark"); // Keep standard light styles
+    }
+  }, []);
+
+  // Toggles between light and dark modes
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      document.documentElement.classList.add("dark"); // Add .dark to <html> root
+      localStorage.setItem("theme", "dark"); // Save user choice
+    } else {
+      setTheme("light");
+      document.documentElement.classList.remove("dark"); // Remove .dark from <html> root
+      localStorage.setItem("theme", "light"); // Save user choice
+    }
+  };
+
+  console.log("[Navbar] Current active section:", activeSection);
 
   useEffect(() => {
-    // Fallback: If we are at the very top of the page, highlight Home
     const handleScroll = () => {
-      if (window.scrollY < 120) {
-        setActiveSection("home");
-      }
-    };
+      const sections = [
+        { id: "home", navId: "home" },
+        { id: "about", navId: "about" },
+        { id: "principles", navId: "about" },
+        { id: "services", navId: "services" },
+        { id: "projects", navId: "projects" },
+        { id: "highlights", navId: "projects" },
+        { id: "contact", navId: "contact" },
+        { id: "partners", navId: "contact" },
+      ];
 
-    window.addEventListener("scroll", handleScroll);
+      // Find the last section whose top is above the 1/3 viewport trigger line
+      const trigger = window.innerHeight / 3;
+      let currentActive = "home";
 
-    // Set up intersection observer for other sections
-    const observerOptions = {
-      root: null, // use viewport
-      rootMargin: "-30% 0px -60% 0px", // triggers when section is in upper-mid viewport
-      threshold: 0,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      for (const section of sections) {
+        const el = document.getElementById(section.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= trigger) {
+            currentActive = section.navId;
+          }
         }
-      });
+      }
+
+      // Force to contact if we are at the very bottom
+      if (window.scrollY > 0) {
+        const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+        if (isAtBottom) {
+          currentActive = "contact";
+        }
+      }
+
+      setActiveSection(currentActive);
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    const sectionIds = ["about", "services", "projects", "contact"];
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      sectionIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) observer.unobserve(element);
-      });
     };
   }, []);
 
@@ -111,8 +143,25 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Call to Action Button */}
-          <div className="hidden md:flex md:items-center">
+          {/* Call to Action Button & Theme Toggle */}
+          <div className="hidden md:flex md:items-center gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+              )}
+            </button>
+
             <Link
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-zinc-800 hover:shadow-lg dark:bg-white dark:text-black dark:hover:bg-zinc-200"
@@ -121,8 +170,25 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
+          {/* Mobile Menu & Theme Toggle Section */}
+          <div className="flex md:hidden items-center gap-2">
+            {/* Theme Toggle Button Mobile */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+              )}
+            </button>
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"

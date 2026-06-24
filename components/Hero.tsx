@@ -35,15 +35,15 @@ const sliderVariants: Variants = {
 
 export default function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-zinc-950 py-16 sm:py-24 lg:py-32 flex items-center min-h-[85vh] lg:h-[88vh] lg:min-h-[750px] border-b border-zinc-900">
+    <section id="home" className="relative w-full overflow-hidden bg-white dark:bg-zinc-950 pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 flex items-center min-h-[78vh] lg:h-[82vh] lg:min-h-[680px] border-b border-zinc-200/60 dark:border-zinc-900">
       {/* Dynamic Glow Effects */}
-      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-red-600/10 blur-[150px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-red-800/5 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-red-600/5 dark:bg-red-600/10 blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-red-800/[0.02] dark:bg-red-800/5 blur-[120px] pointer-events-none z-0" />
 
       {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293704_1px,transparent_1px),linear-gradient(to_bottom,#1f293704_1px,transparent_1px)] bg-size-[4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 dark:opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-10 lg:-mt-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Text Content Column */}
@@ -51,7 +51,7 @@ export default function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 flex flex-col items-start text-left space-y-6 sm:space-y-8"
+            className="lg:col-span-6 flex flex-col items-start text-left space-y-6 sm:space-y-8"
           >
             {/* Animated Brand Badge */}
             <motion.span
@@ -68,7 +68,7 @@ export default function Hero() {
             {/* Main Heading */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-extrabold tracking-tight sm:text-6xl text-white leading-[1.1] sm:leading-[1.1]"
+              className="text-4xl font-extrabold tracking-tight sm:text-6xl text-zinc-900 dark:text-white leading-[1.1] sm:leading-[1.1]"
             >
               Empowering Your{" "}
               <span className="text-[#ff3b30] bg-gradient-to-r from-[#ff3b30] to-red-500 bg-clip-text text-transparent">
@@ -79,9 +79,9 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg leading-8 text-zinc-300 max-w-2xl"
+              className="text-lg leading-8 text-zinc-600 dark:text-zinc-300 max-w-2xl"
             >
-              Your trusted partner in Event Management, Branding, Printing, Video Production, Advertising, and Digital Marketing. Delivering ideas that inspire and experiences that last.
+              Your trusted partner in Event Management, Branding, Printing, Video Production, Advertising, Digital Marketing, and Software & Web Development. Delivering ideas that inspire and experiences that last.
             </motion.p>
 
             {/* Buttons */}
@@ -97,7 +97,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 hover:border-white/45 backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-full border border-zinc-300 dark:border-white/20 px-8 py-4 text-base font-semibold text-zinc-800 dark:text-white hover:bg-zinc-50 dark:hover:bg-white/10 hover:border-zinc-400 dark:hover:border-white/45 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Get in Touch
               </Link>
@@ -109,11 +109,21 @@ export default function Hero() {
             variants={sliderVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-5 w-full flex justify-center z-10"
+            className="lg:col-span-6 w-full flex justify-center z-10"
           >
-            <div className="w-full max-w-lg lg:max-w-none shadow-[0_20px_50px_rgba(255,59,48,0.15)] rounded-3xl">
+            <motion.div 
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-full max-w-xl lg:max-w-none shadow-[0_20px_50px_rgba(255,59,48,0.2),_0_0_100px_rgba(255,59,48,0.08)] rounded-3xl"
+            >
               <EventSlider />
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>

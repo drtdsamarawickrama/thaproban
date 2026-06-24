@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
@@ -77,6 +78,15 @@ const serviceList = [
       </svg>
     ),
   },
+  {
+    title: "Software & Web Development",
+    desc: "Custom applications and modern web solutions.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Services() {
@@ -84,147 +94,209 @@ export default function Services() {
     <section id="services" className="py-20 sm:py-28 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden border-t border-zinc-200/60 dark:border-zinc-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Logo and Section Title */}
+        {/* Section Title */}
         <div className="flex flex-col items-start space-y-4 mb-16">
           <span className="text-[#ff0000] text-sm font-bold tracking-widest uppercase relative after:content-[''] after:block after:w-16 after:h-[2px] after:bg-[#ff0000] after:mt-2">
             WE SPECIALIZE IN
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
-          {/* Left Column: Services Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8"
-          >
-            {serviceList.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-zinc-100/50 dark:hover:bg-zinc-900/30 transition-all duration-300"
-              >
-                {/* Red Circular Icon Background */}
-                <div className="flex-shrink-0 h-12 w-12 rounded-full bg-[#ff0000] text-white flex items-center justify-center shadow-md shadow-[#ff0000]/20">
-                  {service.icon}
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-zinc-900 dark:text-white uppercase tracking-wide">
-                    {service.title}
-                  </h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                    {service.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Left Column: Services Grid & Slogan */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+            >
+              {serviceList.map((service, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -5 }}
+                  className={`flex items-start gap-4 p-4 rounded-xl hover:bg-zinc-100/50 dark:hover:bg-zinc-900/30 transition-all duration-300 ${
+                    index === serviceList.length - 1 && serviceList.length % 2 !== 0
+                      ? "sm:col-span-2"
+                      : ""
+                  }`}
+                >
+                  {/* Red Circular Icon Background */}
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-[#ff0000] text-white flex items-center justify-center shadow-md shadow-[#ff0000]/20">
+                    {service.icon}
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white uppercase tracking-wide">
+                      {service.title}
+                    </h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
+                      {service.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
 
-          {/* Right Column: Creative Mockups */}
+            {/* Slogan from flyer */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800/80 w-full pl-4"
+            >
+              <div className="space-y-1">
+                <p className="text-xl sm:text-2xl font-black text-zinc-955 dark:text-white tracking-wide uppercase">
+                  IDEAS THAT INSPIRE.
+                </p>
+                <p className="text-xl sm:text-2xl font-black text-[#ff0000] tracking-wide uppercase">
+                  EXPERIENCES THAT LAST.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Creative Mockups Collage (Dark theme flyer styled) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: 40 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ type: "spring", stiffness: 60, damping: 15 }}
-            className="lg:col-span-5 relative bg-zinc-900/5 dark:bg-white/5 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 aspect-square sm:aspect-4/3 lg:aspect-square flex flex-col justify-between overflow-hidden shadow-sm"
+            className="lg:col-span-5 self-start justify-self-center relative w-full max-w-[520px] bg-zinc-950 border border-zinc-900 rounded-3xl p-6 sm:p-8 aspect-square flex flex-col justify-between overflow-hidden shadow-2xl"
           >
             {/* Grid Pattern Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
             {/* Glowing spot effects */}
             <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-[#ff0000]/10 rounded-full blur-[40px] pointer-events-none" />
 
-            {/* Visual Graphic Representation (Director's Chair, Branding layouts) */}
-            <div className="relative w-full h-full flex items-center justify-center min-h-[250px]">
+            {/* Diagonal Red Stripes matching flyer */}
+            <div className="absolute right-[25%] -top-20 -bottom-20 w-16 bg-[#ff0000]/80 skew-x-[-15deg] z-0 shadow-[0_0_40px_rgba(255,0,0,0.4)]" />
+            <div className="absolute right-[20%] -top-20 -bottom-20 w-3 bg-[#ff0000]/40 skew-x-[-15deg] z-0" />
+
+            {/* Visual Graphic Representation */}
+            <div className="relative w-full h-full flex items-center justify-center min-h-[300px]">
               
-              {/* BRAND mockup card */}
+              {/* Tripod Video Camera */}
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute z-0 top-[8%] left-[20%] w-[38%] aspect-square pointer-events-none opacity-40 dark:opacity-60"
+              >
+                <svg className="w-full h-full text-zinc-700 dark:text-zinc-400" viewBox="0 0 100 100" fill="none">
+                  {/* Camera Body */}
+                  <rect x="25" y="25" width="30" height="20" rx="3" fill="currentColor" />
+                  <rect x="55" y="28" width="12" height="14" rx="2" fill="currentColor" />
+                  {/* Lens */}
+                  <polygon points="67,31 77,25 77,45 67,39" fill="#ff0000" />
+                  {/* Viewfinder */}
+                  <rect x="30" y="18" width="14" height="7" rx="1" fill="currentColor" />
+                  {/* Handle */}
+                  <path d="M28 25 V21 H45 V25" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Tripod Mount */}
+                  <rect x="37" y="45" width="6" height="5" fill="#27272a" />
+                  {/* Legs */}
+                  <line x1="40" y1="50" x2="25" y2="95" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="40" y1="50" x2="40" y2="98" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="40" y1="50" x2="55" y2="95" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </motion.div>
+
+              {/* Stylized Director's Chair */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute z-10 bottom-6 left-[13%] w-[62%] aspect-square flex flex-col items-center justify-center pointer-events-none drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+              >
+                <svg className="w-full h-full text-zinc-900 dark:text-zinc-200" viewBox="0 0 200 200" fill="none">
+                  {/* Poles */}
+                  <line x1="60" y1="50" x2="60" y2="155" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                  <line x1="140" y1="50" x2="140" y2="155" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                  
+                  {/* Backrest canvas */}
+                  <rect x="54" y="60" width="92" height="32" rx="4" fill="#09090b" stroke="#ff0000" strokeWidth="2" />
+                  {/* Thaproban text */}
+                  <text x="100" y="81" fill="#ffffff" fontSize="10" fontWeight="900" letterSpacing="1.5" textAnchor="middle">
+                    THAPROBAN
+                  </text>
+                  
+                  {/* Seat canvas */}
+                  <polygon points="50,115 150,115 142,125 58,125" fill="#09090b" stroke="#3f3f46" strokeWidth="1.5" />
+                  <line x1="50" y1="115" x2="150" y2="115" stroke="currentColor" strokeWidth="5" />
+                  
+                  {/* Crossed Legs */}
+                  <line x1="60" y1="115" x2="135" y2="185" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
+                  <line x1="140" y1="115" x2="65" y2="185" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
+                  
+                  {/* Bottom runners */}
+                  <line x1="55" y1="185" x2="85" y2="185" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                  <line x1="115" y1="185" x2="145" y2="185" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                  
+                  {/* Armrests */}
+                  <line x1="48" y1="100" x2="152" y2="100" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+                  <line x1="52" y1="100" x2="52" y2="115" stroke="currentColor" strokeWidth="4.5" />
+                  <line x1="148" y1="100" x2="148" y2="115" stroke="currentColor" strokeWidth="4.5" />
+                </svg>
+              </motion.div>
+              
+              {/* BRAND mockup card (top-left) */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 left-4 w-48 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl p-4 shadow-xl z-20"
+                className="absolute top-4 left-4 w-32 sm:w-36 bg-zinc-900/90 border border-zinc-800 rounded-xl p-3 sm:p-4 shadow-xl z-20 backdrop-blur-xs"
               >
                 <div className="h-2 w-8 bg-[#ff0000] rounded mb-3" />
-                <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Branding Identity</span>
-                <h4 className="text-lg font-black text-zinc-900 dark:text-white mt-1 leading-tight">BRAND</h4>
-                <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-700 flex justify-between items-center text-[10px] text-zinc-400">
+                <span className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Branding Identity</span>
+                <h4 className="text-lg font-black text-white mt-1 leading-tight">BRAND</h4>
+                <div className="mt-4 pt-3 border-t border-zinc-800/80 flex justify-between items-center text-[9px] text-zinc-500">
                   <span>Concept Design</span>
                   <span>100%</span>
                 </div>
               </motion.div>
 
-              {/* BIG IDEA mockup card */}
+              {/* BIG IDEA mockup card (middle-right) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-12 right-2 w-56 bg-zinc-950 border border-zinc-800 rounded-2xl p-5 shadow-2xl text-white z-10"
+                className="absolute bottom-10 right-4 w-36 sm:w-40 bg-zinc-950/95 border border-zinc-800 rounded-2xl p-4 sm:p-5 shadow-2xl text-white z-20"
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="h-6 w-6 rounded bg-[#ff0000]/10 border border-[#ff0000]/20 flex items-center justify-center">
-                    <svg className="h-3 w-3 text-[#ff0000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <div className="flex justify-between items-start mb-3">
+                  <div className="h-5 w-5 rounded bg-[#ff0000]/10 border border-[#ff0000]/20 flex items-center justify-center">
+                    <svg className="h-2.5 w-2.5 text-[#ff0000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <span className="text-[9px] text-[#ff0000] font-bold tracking-widest uppercase">Advertising</span>
+                  <span className="text-[8px] text-[#ff0000] font-bold tracking-widest uppercase">Advertising</span>
                 </div>
-                <h5 className="text-base font-extrabold tracking-tight">BIG IDEA</h5>
-                <h4 className="text-xl font-black tracking-tight text-[#ff0000] -mt-1">BIGGER IMPACT</h4>
-                <p className="text-[10px] text-zinc-400 mt-2 leading-normal">
-                  Delivering high-end campaigns that scale brand visibility globally.
+                <h5 className="text-sm font-extrabold tracking-tight">BIG IDEA</h5>
+                <h4 className="text-lg font-black tracking-tight text-[#ff0000] -mt-1">BIGGER IMPACT</h4>
+                <p className="text-[9px] text-zinc-400 mt-2 leading-normal">
+                  Delivering campaigns that scale brand visibility.
                 </p>
               </motion.div>
-
-              {/* Central Director's Chair outline graphic */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
-                <svg className="h-72 w-72 text-zinc-900 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.5">
-                  <path d="M6 4h12M6 8h12M4 4v16M20 4v16M5 20l7-7 7 7M19 20l-7-7-7 7M8 12h8" />
-                </svg>
-              </div>
 
               {/* Floating Mobile analytics card */}
               <motion.div
-                animate={{ x: [0, -5, 0], y: [0, 5, 0] }}
+                animate={{ x: [0, -3, 0], y: [0, 5, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-16 right-6 w-32 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-3 shadow-lg z-30 flex flex-col gap-2"
+                className="absolute top-8 right-4 w-26 sm:w-28 bg-zinc-900/90 border border-zinc-800 rounded-lg p-2.5 sm:p-3 shadow-lg z-20 flex flex-col gap-2 backdrop-blur-xs"
               >
-                <span className="text-[8px] text-zinc-400 font-bold uppercase">Digital Marketing</span>
+                <span className="text-[8px] text-zinc-500 font-bold uppercase">Digital Marketing</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-black text-zinc-900 dark:text-white">+142%</span>
+                  <span className="text-xs font-black text-white">+142%</span>
                   <span className="text-[7px] text-emerald-500 font-bold">▲ Reach</span>
                 </div>
                 <div className="h-6 w-full flex items-end gap-1 pt-1">
-                  <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-700 rounded-t" />
-                  <div className="h-4 w-full bg-zinc-300 dark:bg-zinc-600 rounded-t" />
+                  <div className="h-2 w-full bg-zinc-800 rounded-t" />
+                  <div className="h-4 w-full bg-zinc-700 rounded-t" />
                   <div className="h-5 w-full bg-[#ff0000] rounded-t" />
-                  <div className="h-3 w-full bg-zinc-300 dark:bg-zinc-600 rounded-t" />
+                  <div className="h-3 w-full bg-zinc-700 rounded-t" />
                 </div>
               </motion.div>
 
             </div>
-
-            {/* Slogan & Website at bottom */}
-            <div className="relative z-30 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 w-full">
-              <div className="space-y-0.5">
-                <p className="text-xs font-extrabold text-zinc-950 dark:text-white tracking-wider">
-                  IDEAS THAT INSPIRE.
-                </p>
-                <p className="text-xs font-extrabold text-[#ff0000] tracking-wider">
-                  EXPERIENCES THAT LAST.
-                </p>
-              </div>
-              <a 
-                href="https://www.thaproban.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-xs font-bold text-zinc-500 hover:text-[#ff0000] transition-colors"
-              >
-                www.thaproban.com
-              </a>
-            </div>
-
           </motion.div>
           
         </div>

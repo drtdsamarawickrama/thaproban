@@ -12,13 +12,13 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
       <Hero />
-      <Partners />
       <About />
       <Principles />
       <Services />
       <Projects />
       <Highlights />
       <Contact />
+      <Partners />
       <Footer />
     </main>
   );
