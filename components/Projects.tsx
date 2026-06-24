@@ -23,7 +23,7 @@ const cardVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 sm:py-32 overflow-hidden">
+    <section id="projects" className="py-24 sm:py-32 bg-white dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

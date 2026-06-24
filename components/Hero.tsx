@@ -90,13 +90,13 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
               <Link
-                href="#services"
+                href="/services"
                 className="inline-flex items-center justify-center rounded-full bg-[#ff3b30] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-[#cc2b20] hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Explore Our Services
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-full border border-zinc-300 dark:border-white/20 px-8 py-4 text-base font-semibold text-zinc-800 dark:text-white hover:bg-zinc-50 dark:hover:bg-white/10 hover:border-zinc-400 dark:hover:border-white/45 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Get in Touch

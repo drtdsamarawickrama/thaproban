@@ -6,11 +6,10 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Highlights from "@/components/Highlights";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
+    <div className="flex flex-col">
       <Hero />
       <About />
       <Principles />
@@ -19,7 +18,6 @@ export default function Home() {
       <Highlights />
       <Contact />
       <Partners />
-      <Footer />
-    </main>
+    </div>
   );
 }

@@ -28,7 +28,7 @@ export default function About() {
                 priority
               />
               {/* Subtle lighting overlay to match the stage vibes */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-tr from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Thick Red Right Border - matches the slide design */}

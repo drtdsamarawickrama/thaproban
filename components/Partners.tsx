@@ -25,7 +25,7 @@ const itemVariants: Variants = {
 
 export default function Partners() {
   return (
-    <section id="partners" className="py-12 border-y border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-100/50 dark:bg-zinc-950/50 overflow-hidden">
+    <section id="partners" className="py-12 border-y border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-100/50 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: -10 }}

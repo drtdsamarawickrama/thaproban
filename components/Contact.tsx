@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-zinc-100 dark:bg-zinc-900/40 border-t border-zinc-200/60 dark:border-zinc-800/60 transition-colors duration-300 overflow-hidden">
+    <section id="contact" className="py-24 sm:py-32 bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200/60 dark:border-zinc-800/60 transition-colors duration-300 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           

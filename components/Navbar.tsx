@@ -3,30 +3,32 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About Us", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
 ];
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   
-  // Theme state: default to 'light' (white background)
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  // Theme state: default to 'dark' (dark mode on first visit)
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   // Load saved theme preference from local storage when page mounts
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme === "dark") {
-      setTheme("dark");
-      document.documentElement.classList.add("dark"); // Trigger Tailwind's dark styles
-    } else {
+    if (savedTheme === "light") {
       setTheme("light");
-      document.documentElement.classList.remove("dark"); // Keep standard light styles
+      document.documentElement.classList.remove("dark"); // Switch to light styles if saved
+    } else {
+      setTheme("dark");
+      document.documentElement.classList.add("dark"); // Default to dark styles
     }
   }, []);
 
@@ -46,49 +48,17 @@ export default function Navbar() {
   console.log("[Navbar] Current active section:", activeSection);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        { id: "home", navId: "home" },
-        { id: "about", navId: "about" },
-        { id: "principles", navId: "about" },
-        { id: "services", navId: "services" },
-        { id: "projects", navId: "projects" },
-        { id: "highlights", navId: "projects" },
-        { id: "contact", navId: "contact" },
-        { id: "partners", navId: "contact" },
-      ];
-
-      // Find the last section whose top is above the 1/3 viewport trigger line
-      const trigger = window.innerHeight / 3;
-      let currentActive = "home";
-
-      for (const section of sections) {
-        const el = document.getElementById(section.id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= trigger) {
-            currentActive = section.navId;
-          }
-        }
+    if (pathname === "/") {
+      setActiveSection("home");
+    } else {
+      const match = navLinks.find(link => link.href === pathname);
+      if (match) {
+        setActiveSection(match.href.substring(1));
+      } else {
+        setActiveSection("home");
       }
-
-      // Force to contact if we are at the very bottom
-      if (window.scrollY > 0) {
-        const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
-        if (isAtBottom) {
-          currentActive = "contact";
-        }
-      }
-
-      setActiveSection(currentActive);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    }
+  }, [pathname]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-black/[0.06] dark:border-white/[0.06] bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-300">
@@ -163,7 +133,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-zinc-800 hover:shadow-lg dark:bg-white dark:text-black dark:hover:bg-zinc-200"
             >
               Get in Touch
@@ -258,7 +228,7 @@ export default function Navbar() {
             })}
             <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] mt-4 px-3">
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="flex w-full items-center justify-center rounded-full bg-zinc-950 px-5 py-3 text-base font-semibold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
