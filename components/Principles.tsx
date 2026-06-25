@@ -91,6 +91,7 @@ export default function Principles() {
                   height={36}
                   className="object-contain block dark:hidden"
                   priority
+                  style={{ width: "auto" }}
                 />
                 <Image
                   src="/logo-dark.png"
@@ -99,6 +100,7 @@ export default function Principles() {
                   height={36}
                   className="object-contain hidden dark:block"
                   priority
+                  style={{ width: "auto" }}
                 />
               </div>
               <p className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider pl-1">
@@ -202,6 +204,7 @@ export default function Principles() {
                 fill
                 className="object-cover"
                 priority
+                sizes="(max-width: 1024px) 100vw, 446px"
               />
 
               {/* Shine effect overlay */}
@@ -269,6 +272,7 @@ export default function Principles() {
                 fill
                 className="object-contain object-center"
                 priority
+                sizes="(max-width: 1024px) 100vw, 446px"
               />
 
               {/* Shine effect overlay */}

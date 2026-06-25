@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Services from "@/components/Services";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Our Services | Thaproban",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  return <Services />;
+  return (
+    <div className="flex flex-col">
+      <PageHeader title="Our Services" subtitle="Discover our range of professional digital and physical solutions." />
+      <Services />
+    </div>
+  );
 }

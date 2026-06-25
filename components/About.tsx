@@ -62,12 +62,14 @@ export default function About() {
                     alt="Thaproban Logo"
                     fill
                     className="object-contain block dark:hidden"
+                    sizes="(max-width: 640px) 192px, 224px"
                   />
                   <Image
                     src="/logo-dark.png"
                     alt="Thaproban Logo"
                     fill
                     className="object-contain hidden dark:block"
+                    sizes="(max-width: 640px) 192px, 224px"
                   />
                 </div>
                 <p className="text-zinc-500 dark:text-zinc-400 text-base sm:text-lg font-medium tracking-wide italic">

@@ -130,7 +130,7 @@ export default function Contact() {
                     name="first-name"
                     id="first-name"
                     className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-950 focus:border-[#ff0000] focus:bg-white focus:outline-none dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:focus:border-[#ff0000] dark:focus:bg-zinc-900 transition-colors"
-                    placeholder="Jane"
+                    placeholder="Kasun"
                   />
                 </div>
                 <div>
@@ -140,7 +140,7 @@ export default function Contact() {
                     name="last-name"
                     id="last-name"
                     className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-950 focus:border-[#ff0000] focus:bg-white focus:outline-none dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:focus:border-[#ff0000] dark:focus:bg-zinc-900 transition-colors"
-                    placeholder="Doe"
+                    placeholder="Sadaruwan"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function Contact() {
                   name="email"
                   id="email"
                   className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-950 focus:border-[#ff0000] focus:bg-white focus:outline-none dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:focus:border-[#ff0000] dark:focus:bg-zinc-900 transition-colors"
-                  placeholder="jane.doe@company.com"
+                  placeholder="kasun@gmail.com"
                 />
               </div>
 

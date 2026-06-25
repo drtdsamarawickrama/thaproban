@@ -97,12 +97,12 @@ const solutions = [
 ];
 
 const previewPanels = [
-  { image: "/event-led-walls.png", alt: "LED Walls & Visual Operations" },
-  { image: "/event-sound-system.png", alt: "Professional Sound Systems" },
-  { image: "/event-light-solutions.png", alt: "Creative Stage Lighting" },
-  { image: "/event-live-broadcasting.png", alt: "Multi-Camera Live Broadcasting" },
-  { image: "/event-videography.png", alt: "Videography & Photography" },
-  { image: "/event-branding-materials.png", alt: "Branding & Event Materials" },
+  { image: "/event-led-walls.webp", alt: "LED Walls & Visual Operations" },
+  { image: "/event-sound-system.webp", alt: "Professional Sound Systems" },
+  { image: "/event-light-solutions.webp", alt: "Creative Stage Lighting" },
+  { image: "/event-live-broadcasting.webp", alt: "Multi-Camera Live Broadcasting" },
+  { image: "/event-videography.webp", alt: "Videography & Photography" },
+  { image: "/event-branding-materials.webp", alt: "Branding & Event Materials" },
 ];
 
 export default function EventSolutions() {
@@ -243,11 +243,12 @@ export default function EventSolutions() {
             {/* Background image covering the banner container */}
             <div className="absolute inset-0 z-0">
               <Image
-                src="/event-child.png"
+                src="/event-child.webp"
                 alt="Live concert lighting background"
                 fill
                 priority
                 className="object-cover opacity-90 dark:opacity-80 scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Softer dark overlay for text readability without washing out the left side */}
               <div className="absolute inset-0 bg-black/20 dark:bg-black/40 z-10" />
@@ -264,6 +265,7 @@ export default function EventSolutions() {
                   alt="Thaproban Logo"
                   fill
                   className="object-contain"
+                  sizes="(max-width: 640px) 192px, 224px"
                 />
               </div>
               <p className="text-xs sm:text-sm font-medium text-white tracking-wider uppercase">

@@ -122,12 +122,12 @@ const solutions = [
 ];
 
 const previewPanels = [
-  { image: "/print-creative-designs.png", alt: "Creative Designs & Profile Mockups" },
-  { image: "/print-tshirt-mug.png", alt: "T-Shirt & Mug Printing" },
-  { image: "/print-offset-digital.png", alt: "High-speed Offset & Digital Printing" },
-  { image: "/print-dealer-boards.png", alt: "Dealer Boards & Signage" },
-  { image: "/print-exhibition-stall.png", alt: "Exhibition Stalls & Banners" },
-  { image: "/print-greeting-cards.png", alt: "Handmade Greeting Cards" },
+  { image: "/print-creative-designs.webp", alt: "Creative Designs & Profile Mockups" },
+  { image: "/print-tshirt-mug.webp", alt: "T-Shirt & Mug Printing" },
+  { image: "/print-offset-digital.webp", alt: "High-speed Offset & Digital Printing" },
+  { image: "/print-dealer-boards.webp", alt: "Dealer Boards & Signage" },
+  { image: "/print-exhibition-stall.webp", alt: "Exhibition Stalls & Banners" },
+  { image: "/print-greeting-cards.webp", alt: "Handmade Greeting Cards" },
 ];
 
 export default function PrintingSolutions() {
@@ -268,11 +268,12 @@ export default function PrintingSolutions() {
               {/* Background image covering the banner container */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/print-background.png"
+                  src="/print-background.webp"
                   alt="CMYK inks background"
                   fill
                   priority
                   className="object-cover opacity-90 dark:opacity-80 scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Softer dark overlay for text readability */}
                 <div className="absolute inset-0 bg-black/35 dark:bg-black/55 z-10" />
@@ -286,10 +287,11 @@ export default function PrintingSolutions() {
                 <div className="flex items-center gap-2.5 justify-end">
                   <div className="relative h-12 w-12 shrink-0">
                     <Image
-                      src="/logo-inkspire.png"
+                      src="/logo-inkspire.webp"
                       alt="Thaproban Inkspire Logo"
                       fill
                       className="object-contain"
+                      sizes="48px"
                     />
                   </div>
                   <div className="flex flex-col items-end">

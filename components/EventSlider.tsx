@@ -13,19 +13,19 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: "/event-slide-1.png",
+    image: "/event-slide-1.webp",
     tag: "Data & AI Forum",
     title: "Snowflake Data and AI Innovation Forum 2025",
     description: "Co-partnering and executing elite corporate tech forums with industry giants like Altria, Boomi, and Snowflake.",
   },
   {
-    image: "/event-slide-2.jpg",
+    image: "/event-slide-2.webp",
     tag: "Business Forum",
     title: "16th International Conference on Business & Information",
     description: "Official tech infrastructure and event management partner for the flagship ICBI 2025 conference.",
   },
   {
-    image: "/event-child.png",
+    image: "/event-child.webp",
     tag: "Academic Conference",
     title: "International Conference on Child Protection 2025",
     description: "Providing high-end operations, digital management, and university inauguration ceremony coordination.",

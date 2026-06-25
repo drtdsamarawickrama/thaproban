@@ -20,21 +20,21 @@ const videos: VideoHighlight[] = [
     tag: "Data & AI Forum",
     description: "Keynotes, panel discussions, and technical breakouts hosted with Altria, Boomi, and Snowflake.",
     url: "https://youtu.be/KzBkL3buubM?si=TQXRY98l4lWqqN3C",
-    coverImage: "/event-slide-1.png",
+    coverImage: "/event-slide-1.webp",
   },
   {
     title: "16th International Conference on Business & Information",
     tag: "Academic Conference",
     description: "Digital infrastructure, live streaming operations, and conference platform management recaps.",
     url: "https://youtu.be/RLW-KoTEtG4?si=o0oVn4YnkXDI0OSF",
-    coverImage: "/event-slide-2.jpg",
+    coverImage: "/event-slide-2.webp",
   },
   {
     title: "3MT Competition | ICBI 2024",
     tag: "Event Highlights",
     description: "3MT (Three Minute Thesis) Competition highlights and production support at the University of Kelaniya.",
     url: "https://youtu.be/X2qrD6zQDBc?si=pqqhzjOc595hGp-6",
-    coverImage: "/event-slide-33.png",
+    coverImage: "/event-slide-3.webp",
   },
   {
     title: "HNB GI 10th Anniversary Celebration",
@@ -42,7 +42,7 @@ const videos: VideoHighlight[] = [
     description: "Providing production coordination, tech setup, and digital highlights for HNB General Insurance 10th Anniversary.",
     url: "https://youtu.be/XTJQc_rTW8Q?si=4eVBKPzjPWtsIRIJ",
     // isLogoCover: true,
-    coverImage: "/event-slide-4.png",
+    coverImage: "/event-slide-4.webp",
   },
 ];
 
@@ -129,6 +129,7 @@ export default function Highlights() {
                       width={220}
                       height={50}
                       className="object-contain opacity-50 group-hover:scale-105 transition-transform duration-500 z-10"
+                      style={{ width: "auto" }}
                     />
                   </>
                 ) : (
@@ -138,6 +139,7 @@ export default function Highlights() {
                       alt={video.title}
                       fill
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
                   </>

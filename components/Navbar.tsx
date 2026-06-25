@@ -59,12 +59,22 @@ export default function Navbar() {
     }
   }, [pathname]);
 
+  const handleNavLinkClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === href) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-black/[0.06] dark:border-white/[0.06] bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-300">
+    <nav className="sticky top-0 z-50 w-full border-b border-black/6 dark:border-white/6 bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo Section */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
@@ -97,6 +107,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavLinkClick(link.href, e)}
                   className={`relative text-base font-semibold transition-colors duration-200 py-2 group ${
                     isActive
                       ? "text-[#ff0000]"
@@ -119,7 +130,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
+              className="p-2.5 rounded-full border border-black/8 dark:border-white/8 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
@@ -146,7 +157,7 @@ export default function Navbar() {
             {/* Theme Toggle Button Mobile */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
+              className="p-2 rounded-full border border-black/08 dark:border-white/8 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-zinc-700 dark:text-zinc-300 cursor-pointer"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
@@ -206,7 +217,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden border-t border-black/[0.06] dark:border-white/[0.06] bg-white dark:bg-black" id="mobile-menu">
+        <div className="md:hidden border-t border-black/6 dark:border-white/6 bg-white dark:bg-black" id="mobile-menu">
           <div className="space-y-1 px-4 py-3 pb-4">
             {navLinks.map((link) => {
               const linkId = link.href === "/" ? "home" : link.href.substring(1);
@@ -216,7 +227,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleNavLinkClick(link.href, e);
+                  }}
                   className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     isActive
                       ? "bg-red-500/10 text-[#ff0000]"
@@ -227,7 +241,7 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] mt-4 px-3">
+            <div className="pt-4 border-t border-black/6 dark:border-white/6 mt-4 px-3">
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
