@@ -275,7 +275,7 @@ export default function Services() {
             {/* Background Services Image Backdrop spanning the full box */}
             <div className="absolute inset-0 pointer-events-none opacity-100 dark:opacity-100 z-0 overflow-hidden">
               <Image
-                src="/services22.png"
+                src="/services22.webp"
                 alt="Services Backdrop"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"

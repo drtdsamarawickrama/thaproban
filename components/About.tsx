@@ -20,7 +20,7 @@ export default function About() {
             {/* The Crew Image */}
             <div className="relative w-full h-full">
               <Image
-                src="/thaproban_crew.png"
+                src="/thaproban_crew.webp"
                 alt="Thaproban Crew"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
