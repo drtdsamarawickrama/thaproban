@@ -25,7 +25,7 @@ const slides: Slide[] = [
     description: "Official tech infrastructure and event management partner for the flagship ICBI 2025 conference.",
   },
   {
-    image: "/event-slide-3.png",
+    image: "/event-child.png",
     tag: "Academic Conference",
     title: "International Conference on Child Protection 2025",
     description: "Providing high-end operations, digital management, and university inauguration ceremony coordination.",

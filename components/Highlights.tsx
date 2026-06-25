@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
 interface VideoHighlight {
@@ -17,31 +19,45 @@ const videos: VideoHighlight[] = [
     title: "Snowflake Data and AI Innovation Forum 2025",
     tag: "Data & AI Forum",
     description: "Keynotes, panel discussions, and technical breakouts hosted with Altria, Boomi, and Snowflake.",
-    url: "https://youtu.be/X2qrD6zQDBc?si=pqqhzjOc595hGp-6",
+    url: "https://youtu.be/KzBkL3buubM?si=TQXRY98l4lWqqN3C",
     coverImage: "/event-slide-1.png",
   },
   {
     title: "16th International Conference on Business & Information",
     tag: "Academic Conference",
     description: "Digital infrastructure, live streaming operations, and conference platform management recaps.",
-    url: "https://youtu.be/KzBkL3buubM?si=TQXRY98l4lWqqN3C",
+    url: "https://youtu.be/RLW-KoTEtG4?si=o0oVn4YnkXDI0OSF",
     coverImage: "/event-slide-2.jpg",
   },
   {
-    title: "International Conference on Child Protection 2025",
-    tag: "Inauguration Summit",
-    description: "Inauguration highlights, panel sessions, and university logistics coordination showcase.",
-    url: "https://youtu.be/RLW-KoTEtG4?si=o0oVn4YnkXDI0OSF",
-    coverImage: "/event-slide-3.png",
+    title: "3MT Competition | ICBI 2024",
+    tag: "Event Highlights",
+    description: "3MT (Three Minute Thesis) Competition highlights and production support at the University of Kelaniya.",
+    url: "https://youtu.be/X2qrD6zQDBc?si=pqqhzjOc595hGp-6",
+    coverImage: "/event-slide-33.png",
   },
   {
-    title: "Thaproban Digital Operations & Solutions Showcase",
-    tag: "Platform Promo",
-    description: "A deep dive into our custom event management systems, digital check-in tools, and infrastructure capabilities.",
+    title: "HNB GI 10th Anniversary Celebration",
+    tag: "Corporate Event",
+    description: "Providing production coordination, tech setup, and digital highlights for HNB General Insurance 10th Anniversary.",
     url: "https://youtu.be/XTJQc_rTW8Q?si=4eVBKPzjPWtsIRIJ",
-    isLogoCover: true,
+    // isLogoCover: true,
+    coverImage: "/event-slide-4.png",
   },
 ];
+
+// Helper function to extract YouTube video ID and return embed URL with autoplay
+const getEmbedUrl = (url: string) => {
+  let videoId = "";
+  if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1].split("?")[0];
+  } else if (url.includes("youtube.com/watch?v=")) {
+    videoId = url.split("watch?v=")[1].split("&")[0];
+  } else if (url.includes("youtube.com/embed/")) {
+    videoId = url.split("youtube.com/embed/")[1].split("?")[0];
+  }
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+};
 
 const gridVariants: Variants = {
   hidden: { opacity: 0 },
@@ -63,6 +79,8 @@ const cardVariants: Variants = {
 };
 
 export default function Highlights() {
+  const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
+
   return (
     <section id="highlights" className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -93,14 +111,12 @@ export default function Highlights() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {videos.map((video, idx) => (
-            <motion.a
+            <motion.button
               key={idx}
-              href={video.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setActiveVideoUrl(video.url)}
               variants={cardVariants}
               whileHover={{ y: -6 }}
-              className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800/80 overflow-hidden bg-white dark:bg-zinc-900 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="group flex flex-col rounded-2xl border border-zinc-200/50 dark:border-zinc-800/80 overflow-hidden bg-white dark:bg-zinc-900 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer text-left w-full focus:outline-none"
             >
               {/* Thumbnail Container */}
               <div className="relative aspect-video w-full overflow-hidden bg-zinc-950 flex items-center justify-center">
@@ -160,11 +176,41 @@ export default function Highlights() {
                   </svg>
                 </div>
               </div>
-            </motion.a>
+            </motion.button>
           ))}
         </motion.div>
 
-        {/* Channel Link Button */}
+        {/* YouTube Video Modal Player Overlay */}
+        {activeVideoUrl && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6">
+            {/* Click outside to close */}
+            <div className="absolute inset-0 cursor-pointer" onClick={() => setActiveVideoUrl(null)} />
+            
+            <div className="relative w-full max-w-[850px] aspect-video rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-2xl z-10">
+              {/* Close Button */}
+              <button 
+                onClick={() => setActiveVideoUrl(null)}
+                className="absolute -top-12 right-0 sm:-right-12 text-white/70 hover:text-white transition-colors p-2 z-20 cursor-pointer"
+                aria-label="Close video player"
+              >
+                <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Embedded Player */}
+              <iframe
+                src={getEmbedUrl(activeVideoUrl)}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        )}
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -172,17 +218,15 @@ export default function Highlights() {
           transition={{ delay: 0.2 }}
           className="mt-16 text-center"
         >
-          <a
-            href="https://www.youtube.com/@thaprobandigital/videos"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-3.5 text-base font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
+          <Link
+            href="/services"
+            className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-3.5 text-base font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
           >
-            <svg className="h-5 w-5 text-red-600 fill-current" viewBox="0 0 24 24">
-              <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            <span>Explore More Events</span>
+            <svg className="h-4 w-4 text-red-600 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-            Explore YouTube Channel
-          </a>
+          </Link>
         </motion.div>
 
       </div>

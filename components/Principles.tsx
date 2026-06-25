@@ -150,7 +150,7 @@ export default function Principles() {
                   <motion.div
                     variants={cardVariants}
                     whileHover={{ y: -4 }}
-                    className="flex flex-col items-start text-left space-y-3 flex-grow"
+                    className="flex flex-col items-start text-left space-y-3 grow"
                   >
                     {/* Minimal icon */}
                     <div className="h-10 w-10 flex items-center justify-start">
@@ -175,7 +175,7 @@ export default function Principles() {
 
             {/* Red Slogan Bar (Directly underneath the values grid) */}
             <div className="pt-6">
-              <div className="relative overflow-hidden bg-[#ff0000] text-white px-6 py-3.5 font-bold text-xs sm:text-sm tracking-wider uppercase inline-flex items-center [clip-path:polygon(0_0,_92%_0,_100%_100%,_0_100%)] pr-12">
+              <div className="relative overflow-hidden bg-[#ff0000] text-white px-6 py-3.5 font-bold text-xs sm:text-sm tracking-wider uppercase inline-flex items-center [clip-path:polygon(0_0,92%_0,100%_100%,0_100%)] pr-12">
                 IDEAS THAT INSPIRE. <span className="font-black text-zinc-100 ml-1.5">EXPERIENCES THAT LAST.</span>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function Principles() {
               whileHover={{ 
                 y: -8
               }}
-              className="group relative hidden lg:block w-full max-w-[446px] aspect-[1984/2134] overflow-hidden rounded-2xl border-2 shadow-[0_0_20px_rgba(255,255,255,0.25),0_15px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_0_30px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(255,255,255,0.45),0_25px_50px_rgba(0,0,0,0.15)] hover:dark:shadow-[0_0_40px_rgba(0,0,0,0.9)] transition-all duration-300 z-10 cursor-pointer"
+              className="group relative hidden lg:block w-full max-w-[446px] aspect-1984/2134 overflow-hidden rounded-2xl border-2 shadow-[0_0_20px_rgba(255,255,255,0.25),0_15px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_0_30px_rgba(0,0,0,0.7)] hover:shadow-[0_0_30px_rgba(255,255,255,0.45),0_25px_50px_rgba(0,0,0,0.15)] hover:dark:shadow-[0_0_40px_rgba(0,0,0,0.9)] transition-all duration-300 z-10 cursor-pointer"
             >
               <Image 
                 src="/arrow_back.webp"
@@ -207,7 +207,7 @@ export default function Principles() {
               {/* Shine effect overlay */}
               <div className="absolute inset-0 z-15 pointer-events-none overflow-hidden">
                 <div 
-                  className="absolute top-0 bottom-0 w-[40%] bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 -translate-x-[120%] group-hover:translate-x-[250%] transition-all duration-1000 ease-out"
+                  className="absolute top-0 bottom-0 w-[40%] bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100-translate-x-[120%] group-hover:translate-x-[250%] transition-all duration-1000 ease-out"
                   style={{ transform: 'skewX(-25deg)' }}
                 />
               </div>
@@ -274,7 +274,7 @@ export default function Principles() {
               {/* Shine effect overlay */}
               <div className="absolute inset-0 z-15 pointer-events-none overflow-hidden">
                 <div 
-                  className="absolute top-0 bottom-0 w-[40%] bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 -translate-x-[120%] group-hover:translate-x-[250%] transition-all duration-1000 ease-out"
+                  className="absolute top-0 bottom-0 w-[40%] bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100-translate-x-[120%] group-hover:translate-x-[250%] transition-all duration-1000 ease-out"
                   style={{ transform: 'skewX(-25deg)' }}
                 />
               </div>
