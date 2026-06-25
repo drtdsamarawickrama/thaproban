@@ -18,6 +18,7 @@ export default function Footer() {
                 width={160} 
                 height={32} 
                 className="h-8 w-auto object-contain" 
+                style={{ width: "auto" }}
               />
             </div>
             <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
@@ -63,9 +64,6 @@ export default function Footer() {
                 <Link href="/services" className="hover:text-[#ff0000] transition-colors">Services</Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-[#ff0000] transition-colors">Projects</Link>
-              </li>
-              <li>
                 <Link href="/contact" className="hover:text-[#ff0000] transition-colors">Contact</Link>
               </li>
             </ul>
@@ -102,19 +100,34 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Galle Road, Colombo 03, Sri Lanka</span>
+                <span>
+                  303/9, Attanayake Mawatha,<br />
+                  Kotte Road, Jubilee Post,<br />
+                  Nugegoda 10300
+                </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <svg className="h-5 w-5 text-[#ff0000] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span>+94 (11) 234-5678</span>
+                <a href="tel:+94715238369" className="hover:text-[#ff0000] transition-colors">+94 71 523 8369</a>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <svg className="h-5 w-5 text-[#ff0000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div className="flex flex-col">
+                  <a href="mailto:ushan@thaproban.com" className="hover:text-[#ff0000] transition-colors leading-tight">ushan@thaproban.com</a>
+                  <a href="mailto:thaprobandigital@gmail.com" className="hover:text-[#ff0000] transition-colors leading-tight mt-1 text-zinc-500 hover:text-[#ff0000]">thaprobandigital@gmail.com</a>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <svg className="h-5 w-5 text-[#ff0000] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 </svg>
-                <a href="mailto:contact@thaproban.org" className="hover:text-[#ff0000] transition-colors">contact@thaproban.org</a>
+                <a href="https://www.thaproban.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff0000] transition-colors">www.thaproban.com</a>
               </li>
             </ul>
           </div>

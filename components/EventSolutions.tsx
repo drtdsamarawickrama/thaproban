@@ -147,7 +147,13 @@ export default function EventSolutions() {
           
           {/* Left Column: Solutions List */}
           <div className="lg:col-span-5 flex flex-col justify-center space-y-8">
-            <div className="flex flex-col items-start space-y-4 w-fit">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col items-start space-y-4 w-fit"
+            >
               <span className="text-[#ff0000] text-sm font-bold tracking-wider uppercase">Our Services</span>
               <h2 className="text-[#ff0000] text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase flex flex-wrap leading-none">
                 Our Event Solutions
@@ -155,7 +161,7 @@ export default function EventSolutions() {
               <div className="w-[75%] h-[4px] bg-[#ff0000] mt-[3px] rounded-full relative">
                 <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#ff0000] shadow-[0_0_12px_#ff0000]" />
               </div>
-            </div>
+            </motion.div>
 
             <motion.ul
               variants={containerVariants}
@@ -182,7 +188,13 @@ export default function EventSolutions() {
           </div>
 
           {/* Right Column: Visual Stage Showcase */}
-          <div className="lg:col-span-7 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="lg:col-span-7 flex flex-col"
+          >
             <div className="relative h-[450px] sm:h-[500px] lg:h-[550px] w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-950 flex flex-col justify-between p-6 sm:p-8">
             
             {/* Inline Lightbox Overlay (scales up inside the box container) */}
@@ -316,15 +328,70 @@ export default function EventSolutions() {
           </div>
 
           {/* Professional Text Block below the Showcase Box */}
-          <div className="border-l-2 border-[#ff0000] pl-4 py-1 mt-4">
-            <h4 className="text-zinc-900 dark:text-zinc-50 text-base sm:text-lg font-extrabold tracking-wide uppercase">
-              Expertise in Event Management
-            </h4>
-            <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-sm font-medium tracking-wide">
-              Any kind of corporate event solutions
-            </p>
+          <div className="border-l-2 border-[#ff0000] pl-4 py-1 mt-4 flex flex-col gap-4">
+            <div>
+              <h4 className="text-zinc-900 dark:text-zinc-50 text-base sm:text-lg font-extrabold tracking-wide uppercase">
+                Expertise in Event Management
+              </h4>
+              <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-sm font-medium tracking-wide">
+                Any kind of corporate event solutions
+              </p>
+            </div>
+
+            {/* Quick Contacts Bar */}
+            <div className="flex flex-wrap items-center gap-y-3 gap-x-6 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/40">
+              {/* Phone */}
+              <div className="flex items-center gap-2.5 group/phone">
+                <div className="h-8 w-8 rounded-lg bg-[#ff0000]/10 dark:bg-[#ff0000]/20 text-[#ff0000] border border-[#ff0000]/20 flex items-center justify-center shadow-inner group-hover/phone:scale-105 group-hover/phone:bg-[#ff0000] group-hover/phone:text-white group-hover/phone:border-[#ff0000] transition-all duration-300">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
+                <a href="tel:+94715238369" className="text-zinc-700 dark:text-zinc-300 text-xs font-bold hover:text-[#ff0000] dark:hover:text-red-500 transition-colors duration-200">
+                  +94 71 523 8369
+                </a>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden sm:block h-4 w-px bg-zinc-200 dark:bg-zinc-800/80" />
+
+              {/* Email */}
+              <div className="flex items-center gap-2.5 group/email">
+                <div className="h-8 w-8 rounded-lg bg-[#ff0000]/10 dark:bg-[#ff0000]/20 text-[#ff0000] border border-[#ff0000]/20 flex items-center justify-center shadow-inner group-hover/email:scale-105 group-hover/email:bg-[#ff0000] group-hover/email:text-white group-hover/email:border-[#ff0000] transition-all duration-300">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <a href="mailto:ushan@thaproban.com" className="text-zinc-700 dark:text-zinc-300 text-xs font-bold hover:text-[#ff0000] dark:hover:text-red-500 transition-colors duration-200 leading-tight">
+                    ushan@thaproban.com
+                  </a>
+                  <a href="mailto:thaprobandigital@gmail.com" className="text-zinc-500 dark:text-zinc-400 text-[10px] font-medium hover:text-[#ff0000] dark:hover:text-red-500 transition-colors duration-200 leading-tight">
+                    thaprobandigital@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block h-4 w-px bg-zinc-200 dark:bg-zinc-800/80" />
+
+              {/* Website */}
+              <div className="flex items-center gap-2.5 group/web">
+                <div className="h-8 w-8 rounded-lg bg-[#ff0000]/10 dark:bg-[#ff0000]/20 text-[#ff0000] border border-[#ff0000]/20 flex items-center justify-center shadow-inner group-hover/web:scale-105 group-hover/web:bg-[#ff0000] group-hover/web:text-white group-hover/web:border-[#ff0000] transition-all duration-300">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                <a href="https://www.thaproban.com" target="_blank" rel="noopener noreferrer" className="text-zinc-700 dark:text-zinc-300 text-xs font-bold hover:text-[#ff0000] dark:hover:text-red-500 transition-colors duration-200">
+                  www.thaproban.com
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
         </div>
       </div>

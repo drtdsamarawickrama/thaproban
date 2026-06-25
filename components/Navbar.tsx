@@ -72,6 +72,7 @@ export default function Navbar() {
                 width={200}
                 height={40}
                 className="h-10 w-auto block dark:hidden object-contain"
+                style={{ width: "auto" }}
                 priority
               />
               <Image
@@ -80,6 +81,7 @@ export default function Navbar() {
                 width={200}
                 height={40}
                 className="h-10 w-auto hidden dark:block object-contain"
+                style={{ width: "auto" }}
                 priority
               />
             </Link>
