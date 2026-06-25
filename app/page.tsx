@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Principles from "@/components/Principles";
 import Services from "@/components/Services";
 import Highlights from "@/components/Highlights";
+import EventSolutions from "@/components/EventSolutions";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Principles />
       <Services />
       <Highlights />
+      <EventSolutions />
       <Contact />
       <Partners />
     </div>

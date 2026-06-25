@@ -82,7 +82,7 @@ export default function Highlights() {
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
   return (
-    <section id="highlights" className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
+    <section id="highlights" className="pt-24 pb-12 sm:pt-32 sm:pb-16 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -216,10 +216,10 @@ export default function Highlights() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-16 text-center"
+          className="mt-10 text-center"
         >
           <Link
-            href="/services"
+            href="#event-solutions"
             className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-3.5 text-base font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
           >
             <span>Explore More Events</span>
