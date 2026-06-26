@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function DigitalMarketing() {
   return (
@@ -21,16 +22,17 @@ export default function DigitalMarketing() {
             </p>
           </div>
           <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-[450px] aspect-video rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-900 flex items-center justify-center p-8 shadow-xl">
-              <div className="text-center space-y-3">
-                <div className="mx-auto h-12 w-12 rounded-xl bg-[#ff0000]/10 flex items-center justify-center text-[#ff0000]">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h4 className="text-white text-base font-bold">Marketing Campaigns Console</h4>
-                <p className="text-zinc-500 text-xs max-w-[280px]">Custom dashboards, targeting parameters and campaign performance analytics.</p>
-              </div>
+            <div className="relative w-full max-w-[480px] aspect-video rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xl group cursor-pointer">
+              <Image
+                src="/event-slide-1.webp"
+                alt="Digital Marketing Campaign Visual"
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 480px) 100vw, 480px"
+                priority
+              />
+              {/* Softer overlay for premium look */}
+              <div className="absolute inset-0 bg-black/10 dark:bg-black/25 group-hover:bg-transparent transition-colors duration-500" />
             </div>
           </div>
         </div>
@@ -38,3 +40,5 @@ export default function DigitalMarketing() {
     </section>
   );
 }
+
+

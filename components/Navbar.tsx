@@ -244,6 +244,23 @@ export default function Navbar() {
                         </div>
                       </Link>
 
+                      {/* Software & Web Development */}
+                      <Link
+                        href="/services?filter=software-solutions"
+                        onClick={(e) => handleLinkClick("/services?filter=software-solutions", e)}
+                        className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-red-500/10 text-zinc-800 dark:text-zinc-200 hover:text-[#ff0000] dark:hover:text-red-500 transition-all duration-200"
+                      >
+                        <div className="shrink-0 h-9 w-9 rounded-lg bg-red-500/10 dark:bg-red-500/20 text-[#ff0000] flex items-center justify-center">
+                          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                          </svg>
+                        </div>
+                        <div className="text-left">
+                          <div className="text-sm font-bold">Software & Web Development</div>
+                          <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">Web applications, cloud systems & APIs.</div>
+                        </div>
+                      </Link>
+
                       <div className="h-px bg-black/5 dark:bg-white/5 my-1" />
 
                       {/* All Services */}
@@ -455,6 +472,16 @@ export default function Navbar() {
                           className="block rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900 hover:text-[#7c2ebd] dark:hover:text-purple-400"
                         >
                           Printing Solutions
+                        </Link>
+                        <Link
+                          href="/services?filter=software-solutions"
+                          onClick={(e) => {
+                            setIsOpen(false);
+                            handleLinkClick("/services?filter=software-solutions", e);
+                          }}
+                          className="block rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900 hover:text-[#ff0000] dark:hover:text-red-500"
+                        >
+                          Software & Web Development
                         </Link>
                         <Link
                           href="/services"

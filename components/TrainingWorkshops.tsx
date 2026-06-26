@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function TrainingWorkshops() {
   return (
@@ -14,23 +15,23 @@ export default function TrainingWorkshops() {
               <div className="w-[60px] h-1 bg-[#ff0000] rounded-full" />
             </div>
             <p className="text-zinc-800 dark:text-zinc-200 text-lg font-semibold leading-relaxed tracking-wide">
-              Empower your teams and community with technical and creative workshops.
+              We offer the full spectrum of skills, attitude, and knowledge solutions to people and organizations to work better.
             </p>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed max-w-lg">
-              We conduct customized training sessions led by experienced industry leads. Our topics cover creative design, video workflows, leadership skills, and targeted digital marketing strategies.
+              Our comprehensive, result-driven training covers a wide range of critical professional areas. Conducted by industry experts, these programs ensure a high-quality learning experience, direct organizational impact, and skill enhancement.
             </p>
           </div>
           <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-[450px] aspect-video rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 flex items-center justify-center p-8 shadow-xl">
-              <div className="text-center space-y-3">
-                <div className="mx-auto h-12 w-12 rounded-xl bg-[#ff0000]/10 flex items-center justify-center text-[#ff0000]">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h4 className="text-white text-base font-bold">Workshops Center</h4>
-                <p className="text-zinc-500 text-xs max-w-[280px]">Interactive labs, slideshow panels, practical gear sets and feedback forms.</p>
-              </div>
+            <div className="relative w-full max-w-[480px] aspect-video rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xl group cursor-pointer">
+              <Image
+                src="/thaproban_crew.webp"
+                alt="Thaproban Crew and Training Visual"
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 480px) 100vw, 480px"
+                priority
+              />
+              <div className="absolute inset-0 bg-black/10 dark:bg-black/35 group-hover:bg-transparent transition-colors duration-500" />
             </div>
           </div>
         </div>
@@ -38,3 +39,4 @@ export default function TrainingWorkshops() {
     </section>
   );
 }
+

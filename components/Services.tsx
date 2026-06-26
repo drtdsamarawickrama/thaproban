@@ -2,7 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -27,6 +30,7 @@ const serviceList = [
   {
     title: "Event Solutions",
     desc: "Seamlessly executed experiences.",
+    href: "/services?filter=event",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -37,6 +41,7 @@ const serviceList = [
   {
     title: "Video Production",
     desc: "Stories that resonate through visuals.",
+    href: "/services?filter=video-production",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -46,6 +51,7 @@ const serviceList = [
   {
     title: "Branding",
     desc: "Crafting identities that inspire.",
+    href: "/services?filter=digital-marketing",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -55,6 +61,7 @@ const serviceList = [
   {
     title: "Advertising",
     desc: "Strategies that captivate and convert.",
+    href: "/services?filter=digital-marketing",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
@@ -64,6 +71,7 @@ const serviceList = [
   {
     title: "Printing Solutions",
     desc: "Represent your value into touch & feel.",
+    href: "/services?filter=print",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -73,6 +81,7 @@ const serviceList = [
   {
     title: "Digital Marketing",
     desc: "Driving engagement in the digital world.",
+    href: "/services?filter=digital-marketing",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -82,6 +91,7 @@ const serviceList = [
   {
     title: "Software & Web Development",
     desc: "Custom applications and modern web solutions.",
+    href: "/services?filter=software-solutions",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -235,11 +245,12 @@ export default function Services() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-8"
             >
               {serviceList.map((service, index) => (
-                <motion.div
+                <MotionLink
                   key={index}
+                  href={service.href}
                   variants={itemVariants}
                   whileHover={{ y: -6, scale: 1.01 }}
-                  className={`group flex items-start gap-5 p-5 rounded-2xl bg-white/40 dark:bg-zinc-900/10 border border-zinc-200/50 dark:border-zinc-800/30 hover:border-[#ff0000]/40 dark:hover:border-[#ff0000]/40 hover:bg-white dark:hover:bg-zinc-900/30 shadow-xs hover:shadow-xl hover:shadow-[#ff0000]/5 dark:hover:shadow-[#ff0000]/2 transition-all duration-300 ${
+                  className={`group flex items-start gap-5 p-5 rounded-2xl bg-white/40 dark:bg-zinc-900/10 border border-zinc-200/50 dark:border-zinc-800/30 hover:border-[#ff0000]/40 dark:hover:border-[#ff0000]/40 hover:bg-white dark:hover:bg-zinc-900/30 shadow-xs hover:shadow-xl hover:shadow-[#ff0000]/5 dark:hover:shadow-[#ff0000]/2 transition-all duration-300 cursor-pointer ${
                     index === serviceList.length - 1 && serviceList.length % 2 !== 0
                       ? "sm:col-span-2"
                       : ""
@@ -257,7 +268,7 @@ export default function Services() {
                       {service.desc}
                     </p>
                   </div>
-                </motion.div>
+                </MotionLink>
               ))}
             </motion.div>
 

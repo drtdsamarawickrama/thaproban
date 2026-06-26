@@ -139,7 +139,7 @@ export default function AboutDetails() {
                   {idx + 1}
                 </div>
 
-                <span className="text-6xl font-black text-zinc-100 dark:text-zinc-800/50 absolute top-4 right-6 pointer-events-none group-hover:text-[#ff0000]/10 dark:group-hover:text-[#ff0000]/10 transition-colors duration-500">
+                <span className="text-6xl font-black text-zinc-200 dark:text-zinc-800 absolute top-4 right-6 pointer-events-none group-hover:text-[#ff0000]/10 dark:group-hover:text-[#ff0000]/15 transition-colors duration-500">
                   {m.year}
                 </span>
 

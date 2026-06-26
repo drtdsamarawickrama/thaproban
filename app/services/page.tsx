@@ -8,12 +8,15 @@ import PageHeader from "@/components/PageHeader";
 import EventSolutions from "@/components/EventSolutions";
 import EventDetails from "@/components/EventDetails";
 import PrintingSolutions from "@/components/PrintingSolutions";
+import PrintingSolutionsDetails from "@/components/PrintingSolutionsDetails";
 import DigitalMarketing from "@/components/DigitalMarketing";
 import DigitalMarketingDetails from "@/components/DigitalMarketingDetails";
 import VideoProduction from "@/components/VideoProduction";
 import VideoProductionDetails from "@/components/VideoProductionDetails";
 import TrainingWorkshops from "@/components/TrainingWorkshops";
 import TrainingWorkshopsDetails from "@/components/TrainingWorkshopsDetails";
+import SoftwareSolutions from "@/components/SoftwareSolutions";
+import SoftwareSolutionsDetails from "@/components/SoftwareSolutionsDetails";
 
 function ServicesContent() {
   const searchParams = useSearchParams();
@@ -51,6 +54,12 @@ function ServicesContent() {
           subtitle: "Interactive training programs and industry-led workflows.",
           themeColor: "red" as const,
         };
+      case "software-solutions":
+        return {
+          title: "Software & Web Development",
+          subtitle: "Custom web applications and software solutions built to scale.",
+          themeColor: "red" as const,
+        };
       default:
         return {
           title: "Our Services",
@@ -86,7 +95,12 @@ function ServicesContent() {
               <EventDetails />
             </>
           )}
-          {filter === "print" && <PrintingSolutions />}
+          {filter === "print" && (
+            <>
+              <PrintingSolutions />
+              <PrintingSolutionsDetails />
+            </>
+          )}
           {filter === "digital-marketing" && (
             <>
               <DigitalMarketing />
@@ -103,6 +117,12 @@ function ServicesContent() {
             <>
               <TrainingWorkshops />
               <TrainingWorkshopsDetails />
+            </>
+          )}
+          {filter === "software-solutions" && (
+            <>
+              <SoftwareSolutions />
+              <SoftwareSolutionsDetails />
             </>
           )}
           {(!filter || filter === "services") && <Services />}

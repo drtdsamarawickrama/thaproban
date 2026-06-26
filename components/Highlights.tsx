@@ -220,15 +220,17 @@ export default function Highlights() {
           transition={{ delay: 0.2 }}
           className="mt-10 text-center"
         >
-          <Link
-            href="#event-solutions"
-            className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-3.5 text-base font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
+          <a
+            href="https://www.youtube.com/@thaproban_LK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-3.5 text-base font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300 cursor-pointer"
           >
             <span>Explore More Events</span>
             <svg className="h-4 w-4 text-red-600 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </Link>
+          </a>
         </motion.div>
 
       </div>
