@@ -122,7 +122,7 @@ export default function Highlights() {
               <div className="relative aspect-video w-full overflow-hidden bg-zinc-950 flex items-center justify-center">
                 {video.isLogoCover ? (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-red-950/40 via-zinc-950/95 to-zinc-900 z-0" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-red-950/40 via-zinc-950/95 to-zinc-900 z-0" />
                     <Image
                       src="/logo-dark.png"
                       alt="Thaproban Logo"

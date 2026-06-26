@@ -118,7 +118,7 @@ export default function Footer() {
                 </svg>
                 <div className="flex flex-col">
                   <a href="mailto:ushan@thaproban.com" className="hover:text-[#ff0000] transition-colors leading-tight">ushan@thaproban.com</a>
-                  <a href="mailto:thaprobandigital@gmail.com" className="hover:text-[#ff0000] transition-colors leading-tight mt-1 text-zinc-500 hover:text-[#ff0000]">thaprobandigital@gmail.com</a>
+                  <a href="mailto:thaprobandigital@gmail.com" className="transition-colors leading-tight mt-1 text-zinc-500 hover:text-[#ff0000]">thaprobandigital@gmail.com</a>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">

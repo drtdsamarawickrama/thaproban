@@ -237,6 +237,7 @@ export default function PrintingSolutions() {
                         src={activeOverlayPanel.image}
                         alt={activeOverlayPanel.alt}
                         fill
+                        sizes="(max-width: 768px) 100vw, 80vw"
                         className="object-cover"
                       />
                       
