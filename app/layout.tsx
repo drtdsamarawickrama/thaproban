@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Thaproban",
   description: "Welcome to Thaproban site",
+  icons: {
+    icon: "/thaproban-favicon.png",
+    shortcut: "/thaproban-favicon.png",
+    apple: "/thaproban-favicon.png",
+  },
 };
 
 export default function RootLayout({
